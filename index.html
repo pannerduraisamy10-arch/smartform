@@ -578,16 +578,18 @@ body {
                            required>
                 </div>
 
-                <div class="input-group">
-                    <textarea id="message"
-                              placeholder="Tell me about your project..."
-                              required maxlength="500"></textarea>
+             <div class="input-group">
+    <textarea id="message"
+              name="message"
+              placeholder="Tell me about your project..."
+              required
+              maxlength="500"></textarea>
 
-                    <div class="message-footer">
-                        <small>Share your thoughts or project details</small>
-                        <span id="charCount">0 / 500</span>
-                    </div>
-                </div>
+    <div class="message-footer">
+        <small>Share your thoughts or project details</small>
+        <span id="charCount">0 / 500</span>
+    </div>
+</div>
 
                 <button type="submit" class="submit-btn" id="submitBtn">
                     <span id="buttonText">Send Message</span>
@@ -601,7 +603,7 @@ body {
         </div>
 
 
-        <!-- SUCCESS SCREEN -->
+        <!-- SUCCESS SCREEN
         <div class="success-box" id="successBox">
 
             <div class="success-circle">✓</div>
