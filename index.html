@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Me</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f7faf7;
+    color: #15251a;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    overflow-x: hidden;
+}
+
+/* Background */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.3;
+    animation: float 8s ease-in-out infinite alternate;
+}
+
+.glow-1 {
+    width: 400px;
+    height: 400px;
+    background: #a7f3d0;
+    top: -150px;
+    left: -100px;
+}
+
+.glow-2 {
+    width: 350px;
+    height: 350px;
+    background: #bbf7d0;
+    bottom: -120px;
+    right: -100px;
+    animation-delay: 2s;
+}
+
+@keyframes float {
+    from {
+        transform: translate(0, 0);
+    }
+
+    to {
+        transform: translate(50px, 40px);
+    }
+}
+
+/* Main container */
+
+.contact-container {
+    width: 100%;
+    max-width: 1050px;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(15px);
+    border: 1px solid #e3eee5;
+    border-radius: 28px;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(22, 101, 52, 0.08);
+    animation: appear 0.8s ease;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Left side */
+
+.contact-info {
+    background: #123d27;
+    color: white;
+    padding: 50px 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-info::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    right: -100px;
+    bottom: -100px;
+}
+
+.contact-info::after {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+    right: -50px;
+    bottom: -50px;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 13px;
+    border: 1px solid #376b4b;
+    border-radius: 30px;
+    background: rgba(255,255,255,0.05);
+    color: #b9f5cd;
+    font-size: 12px;
+    margin-bottom: 25px;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #4ade80;
+}
+
+.contact-info h1 {
+    font-size: 38px;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    letter-spacing: -1.5px;
+}
+
+.contact-info h1 span {
+    color: #86efac;
+}
+
+.contact-info > p {
+    color: #b8cfc0;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+/* Contact details */
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.contact-icon {
+    width: 43px;
+    height: 43px;
+    border: 1px solid #356348;
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: #86efac;
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.contact-item:hover .contact-icon {
+    background: #225638;
+    transform: translateY(-3px);
+}
+
+.contact-item small {
+    display: block;
+    font-size: 11px;
+    color: #91b39c;
+    margin-bottom: 5px;
+}
+
+.contact-item span {
+    font-size: 13px;
+    color: #e8f5eb;
+}
+
+/* Decorative bottom text */
+
+.left-bottom {
+    margin-top: 60px;
+    color: #789b83;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* Right side */
+
+.contact-form-wrapper {
+    padding: 50px 45px;
+}
+
+.form-heading {
+    margin-bottom: 32px;
+}
+
+.form-heading small {
+    color: #23934f;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.form-heading h2 {
+    font-size: 26px;
+    margin-top: 10px;
+    letter-spacing: -0.8px;
+}
+
+.form-heading p {
+    color: #87938a;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* Inputs */
+
+.input-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.input-group {
+    margin-bottom: 22px;
+    position: relative;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 16px;
+    background: #f8fbf8;
+    border: 1px solid #dce8de;
+    border-radius: 12px;
+    outline: none;
+    font-family: inherit;
+    font-size: 13px;
+    color: #193524;
+    transition: all 0.3s ease;
+}
+
+.input-group textarea {
+    height: 145px;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    background: #fff;
+    border-color: #32a45b;
+    box-shadow: 0 0 0 4px rgba(50,164,91,0.08);
+    transform: translateY(-1px);
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: #9ca9a0;
+}
+
+/* Character count */
+
+.message-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.message-footer small {
+    color: #94a198;
+    font-size: 11px;
+}
+
+#charCount {
+    color: #94a198;
+    font-size: 11px;
+}
+
+/* Submit button */
+
+.submit-btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 12px;
+    background: #176534;
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: #228344;
+    box-shadow: 0 10px 25px rgba(23,101,52,0.18);
+    transform: translateY(-3px);
+}
+
+.submit-btn:active {
+    transform: scale(0.98);
+}
+
+.arrow {
+    transition: transform 0.3s;
+}
+
+.submit-btn:hover .arrow {
+    transform: translateX(5px);
+}
+
+/* Form status */
+
+.status {
+    font-size: 12px;
+    margin-top: 15px;
+    text-align: center;
+    min-height: 18px;
+    color: #16803d;
+}
+
+/* Success animation */
+
+.success-box {
+    display: none;
+    text-align: center;
+    padding: 40px 10px;
+    animation: appear 0.5s ease;
+}
+
+.success-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: #15803d;
+    display: grid;
+    place-items: center;
+    font-size: 30px;
+    margin: 0 auto 20px;
+    animation: pop 0.5s ease;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.success-box h2 {
+    margin-bottom: 10px;
+}
+
+.success-box p {
+    color: #849187;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.back-btn {
+    margin-top: 25px;
+    padding: 12px 20px;
+    border: 1px solid #dce8de;
+    background: white;
+    color: #176534;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.back-btn:hover {
+    background: #f0fdf4;
+}
+
+/* Responsive */
+
+@media(max-width: 800px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        max-width: 600px;
+    }
+
+    .contact-info {
+        padding: 40px 30px;
+    }
+
+    .contact-info h1 {
+        font-size: 32px;
+    }
+
+    .left-bottom {
+        margin-top: 35px;
+    }
+
+    .contact-form-wrapper {
+        padding: 40px 30px;
+    }
+}
+
+@media(max-width: 500px) {
+    body {
+        padding: 15px;
+    }
+
+    .contact-container {
+        border-radius: 20px;
+    }
+
+    .input-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .contact-info,
+    .contact-form-wrapper {
+        padding: 30px 22px;
+    }
+
+    .contact-info h1 {
+        font-size: 29px;
+    }
+
+    .form-heading h2 {
+        font-size: 23px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background">
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+</div>
+
+<div class="contact-container">
+
+    <!-- LEFT SIDE -->
+    <div class="contact-info">
+
+        <div class="badge">
+            <span class="badge-dot"></span>
+            Available for opportunities
+        </div>
+
+        <h1>Let's build<br>something <span>great.</span></h1>
+
+        <p>
+            Have a project in mind, an opportunity, or just want to connect?
+            Feel free to send me a message. I'd love to hear from you.
+        </p>
+
+        <div class="contact-details">
+
+            <div class="contact-item">
+                <div class="contact-icon">✉</div>
+                <div>
+                    <small>Email</small>
+                    <span>yourmail@example.com</span>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">⌖</div>
+                <div>
+                    <small>Location</small>
+                    <span>India</span>
+                </div>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-icon">↗</div>
+                <div>
+                    <small>Response time</small>
+                    <span>Usually within 24–48 hours</span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="left-bottom">
+            LET'S CONNECT &nbsp;·&nbsp; LET'S CREATE
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE -->
+    <div class="contact-form-wrapper">
+
+        <!-- FORM -->
+        <div id="formSection">
+
+            <div class="form-heading">
+                <small>Contact form</small>
+                <h2>Send me a message</h2>
+                <p>Fill in the details below to get in touch.</p>
+            </div>
+
+            <form id="contactForm">
+
+                <div class="input-row">
+
+                    <div class="input-group">
+                        <input type="text" id="name"
+                               placeholder="Your name"
+                               required minlength="2">
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email"
+                               placeholder="Email address"
+                               required>
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="subject"
+                           placeholder="Subject"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <textarea id="message"
+                              placeholder="Tell me about your project..."
+                              required maxlength="500"></textarea>
+
+                    <div class="message-footer">
+                        <small>Share your thoughts or project details</small>
+                        <span id="charCount">0 / 500</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="buttonText">Send Message</span>
+                    <span class="arrow">↗</span>
+                </button>
+
+                <div class="status" id="status"></div>
+
+            </form>
+
+        </div>
+
+
+        <!-- SUCCESS SCREEN -->
+        <div class="success-box" id="successBox">
+
+            <div class="success-circle">✓</div>
+
+            <h2>Message Ready!</h2>
+
+            <p>
+                Your email app will open with your message prepared.<br>
+                Just press Send to deliver it.
+            </p>
+
+            <button class="back-btn" onclick="resetForm()">
+                Send Another Message
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+// Character Counter
+
+const message = document.getElementById("message");
+const charCount = document.getElementById("charCount");
+
+message.addEventListener("input", () => {
+    charCount.textContent = `${message.value.length} / 500`;
+
+    if (message.value.length >= 450) {
+        charCount.style.color = "#e67e22";
+    } else {
+        charCount.style.color = "#94a198";
+    }
+});
+
+
+// Form Submit
+
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const subject = document.getElementById("subject").value.trim();
+    const messageText = document.getElementById("message").value.trim();
+
+    const status = document.getElementById("status");
+    const button = document.getElementById("submitBtn");
+    const buttonText = document.getElementById("buttonText");
+
+    if (!name || !email || !subject || !messageText) {
+        status.textContent = "Please fill in all fields.";
+        return;
+    }
+
+    // Loading animation
+    button.disabled = true;
+    buttonText.textContent = "Preparing message...";
+    button.style.opacity = "0.7";
+
+    setTimeout(() => {
+
+        // Replace with your actual email
+        const receiverEmail = "yourmail@example.com";
+
+        const mailSubject = encodeURIComponent(subject);
+
+        const mailBody = encodeURIComponent(
+            `Name: ${name}\nEmail: ${email}\n\nMessage:\n${messageText}`
+        );
+
+        const mailtoLink =
+            `mailto:${receiverEmail}?subject=${mailSubject}&body=${mailBody}`;
+
+        document.getElementById("formSection").style.display = "none";
+        document.getElementById("successBox").style.display = "block";
+
+        // Opens visitor's email application
+        window.location.href = mailtoLink;
+
+    }, 800);
+
+});
+
+
+// Reset Form
+
+function resetForm() {
+
+    document.getElementById("contactForm").reset();
+
+    document.getElementById("formSection").style.display = "block";
+    document.getElementById("successBox").style.display = "none";
+
+    document.getElementById("charCount").textContent = "0 / 500";
+
+    const button = document.getElementById("submitBtn");
+    button.disabled = false;
+    button.style.opacity = "1";
+
+    document.getElementById("buttonText").textContent = "Send Message";
+
+    document.getElementById("status").textContent = "";
+
+}
+
+</script>
+
+</body>
+</html>
